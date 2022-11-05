@@ -35,16 +35,5 @@ export default {
             title: 'Author',
             to: [{ type: 'user' }]
         },
-        {
-            name: 'comments',
-            type: 'array',
-            title: 'Comments',
-            of: [
-                {
-                    type: 'reference',
-                    to: [{ type: 'comments' }]
-                }
-            ]
-        }
     ]
 }

@@ -14,19 +14,14 @@ export default {
             title: 'Wallet Address'
         },
         {
-            name: 'tokens',
-            type: 'number',
-            title: 'Tokens'
-        },
-        {
             name: 'admin',
             type: 'boolean',
             title: 'Admin'
         },
         {
-            name: 'subscribedBounties',
-            type: 'number',
-            title: 'Subscribed Bounties'
+            name: 'registered',
+            type: 'boolean',
+            title: 'Registered'
         }
     ]
 }

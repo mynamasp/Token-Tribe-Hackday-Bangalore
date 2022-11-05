@@ -1,12 +1,11 @@
-import './App.css';
+import "./App.css";
 import OpeningPage from "./components/OpeningPage.jsx";
 
 function App() {
   return (
     <div className="App">
-      <OpeningPage/>
+      <OpeningPage />
     </div>
   );
 }
-
 export default App;

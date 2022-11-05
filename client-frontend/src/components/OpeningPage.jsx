@@ -1,13 +1,15 @@
-import React from 'react';
+import React from "react";
 import "./OpeningPage.css";
-import NewNavbar from "./NewNavbar"
+import NewNavbar from "./NewNavbar";
+import Admin from "./Admin/admin";
 
 const OpeningPage = () => {
   return (
     <div>
-      <NewNavbar/>
+      <NewNavbar />
+      <Admin />
     </div>
-  )
-}
+  );
+};
 
-export default OpeningPage
+export default OpeningPage;

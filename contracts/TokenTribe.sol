@@ -14,6 +14,7 @@ contract TokenTribe {
     AggregatorV3Interface public priceFeedMatic;
     uint256 minimumTokenPurchase;
     uint256 usdToInr;
+    address public owner;
 
     // Schemas
     // -------
@@ -38,12 +39,11 @@ contract TokenTribe {
     // -----------
 
     constructor(uint256 _minimumTokenPurchase, uint256 _usdToInr) {
+        owner = msg.sender;
         userAddress = msg.sender;
         minimumTokenPurchase = _minimumTokenPurchase;
         usdToInr = _usdToInr;
-        priceFeedMatic = AggregatorV3Interface(
-            0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada
-        );
+        priceFeedMatic = AggregatorV3Interface(0xd0D5e3DB44DE05E9F294BB0a3bEEaF030DE24Ada);
     }
 
     // Mappings
@@ -61,18 +61,16 @@ contract TokenTribe {
     // Modifiers
     // ---------
 
-    modifier onlyAdmin() {
-        require(
-            Admins[userAddress],
-            "You need to be admin to access this function"
-        );
+    modifier onlyAdmin(){
+        require(Admins[userAddress], "You need to be admin to access this function");
         _;
     }
-    modifier onlySubscribed() {
-        require(
-            Subscribed[userAddress],
-            "You need to subscribe first to get this functionality"
-        );
+    modifier onlySubscribed(){
+        require(Subscribed[userAddress], "You need to subscribe first to get this functionality");
+        _;
+    }
+    modifier onlyOwner(){
+        require(msg.sender == owner, "You are not allowed to withdraw");
         _;
     }
 
@@ -89,31 +87,28 @@ contract TokenTribe {
     }
 
     // To get the latest realtime matic price
-    function getMaticPrice() public view returns (uint256) {
-        (, int256 answer, , , ) = priceFeedMatic.latestRoundData();
-        return uint256(answer * 10000000000);
+    function getMaticPrice() public view returns(uint256) {
+        (,int256 answer,,,) = priceFeedMatic.latestRoundData();
+        return uint256(answer*10000000000);
     }
 
     // Getting the conversion rate of matic in USD
-    function getConversionRate(uint256 _amount) public view returns (uint256) {
+    function getConversionRate(uint256 _amount) public view returns (uint256){
         uint256 Price = getMaticPrice();
         uint256 AmountInUsd = (Price * _amount) / 1000000000000000000;
         return AmountInUsd;
     }
 
     // Getting the conversion rate of matic in INR
-    function getInrPrice(uint256 _amount) public view returns (uint256) {
+    function getInrPrice(uint256 _amount) public view returns (uint256){
         uint256 PriceUSD = getConversionRate(_amount);
-        uint256 PriceINR = PriceUSD * usdToInr;
+        uint256 PriceINR = PriceUSD*usdToInr;
         return PriceINR;
     }
 
     // Function to buy tokens
-    function buyTokens(uint256 _amount) public payable onlyAdmin {
-        require(
-            _amount >= minimumTokenPurchase,
-            "You need to buy atleast 10 tokens"
-        );
+    function buyTokens(uint256 _amount) payable public onlyAdmin {
+        require(_amount >= minimumTokenPurchase, "You need to buy atleast 10 tokens");
         uint256 amountToPurchase = _amount.mul(12).div(10);
         require(amountToPurchase == getInrPrice(_amount), "Insufficient funds");
         TokensOwned[msg.sender] += _amount;
@@ -122,10 +117,7 @@ contract TokenTribe {
 
     // Function to subscribe
     function SubscribeToBounties() public payable onlyAdmin {
-        require(
-            getInrPrice(1200) == msg.value,
-            "To subscribe you need to spend Rs. 1000 worth of matic tokens"
-        );
+        require(getInrPrice(1200) == msg.value, "To subscribe you need to spend Rs. 1000 worth of matic tokens");
         Subscribed[msg.sender] = true;
         Users[msg.sender].subscribedBounties += 12;
         TokensOwned[msg.sender] += 1000;
@@ -134,34 +126,22 @@ contract TokenTribe {
     }
 
     // Function to Add Bounty
-    function AddBounty(
-        string memory _name,
-        uint256 _prize,
-        string memory _description
-    ) public onlyAdmin {
-        require(
-            TokensOwned[msg.sender] >= _prize + 50,
-            "Decrease the prize you don't have enough funds"
-        );
-        if (SubscribedBounties[msg.sender] >= 1) {
+    function AddBounty(string memory _name, uint256 _prize, string memory _description) public onlyAdmin {
+        require(TokensOwned[msg.sender] >= _prize+50, "Decrease the prize you don't have enough funds");
+        if(SubscribedBounties[msg.sender] >= 1){
             Bounties[msg.sender][BountiesCreated[msg.sender]].name = _name;
             Bounties[msg.sender][BountiesCreated[msg.sender]].prize = _prize;
-            Bounties[msg.sender][BountiesCreated[msg.sender]]
-                .description = _description;
+            Bounties[msg.sender][BountiesCreated[msg.sender]].description = _description;
             Bounties[msg.sender][BountiesCreated[msg.sender]].status = false;
             SubscribedBounties[msg.sender]--;
             Users[msg.sender].subscribedBounties--;
             Lockedtokens[msg.sender] += _prize;
             TokensOwned[msg.sender] -= _prize;
-        } else {
-            require(
-                TokensOwned[msg.sender] >= 50,
-                "You don't have sufficient funds to add a bounty"
-            );
+        }else{
+            require(TokensOwned[msg.sender] >= 50, "You don't have sufficient funds to add a bounty");
             Bounties[msg.sender][BountiesCreated[msg.sender]].name = _name;
             Bounties[msg.sender][BountiesCreated[msg.sender]].prize = _prize;
-            Bounties[msg.sender][BountiesCreated[msg.sender]]
-                .description = _description;
+            Bounties[msg.sender][BountiesCreated[msg.sender]].description = _description;
             Bounties[msg.sender][BountiesCreated[msg.sender]].status = false;
             TokensOwned[msg.sender] -= _prize + 50;
             Users[msg.sender].tokens -= 50;
@@ -170,16 +150,18 @@ contract TokenTribe {
     }
 
     // Function to close the bounty
-    function CloseBounty(address _winner, uint256 _bountyNumber)
-        public
-        onlyAdmin
-    {
+    function CloseBounty(address _winner, uint256 _bountyNumber) public onlyAdmin {
         Bounties[msg.sender][_bountyNumber].status = true;
         Bounties[msg.sender][_bountyNumber].closedBy = _winner;
         uint256 reward = Bounties[msg.sender][_bountyNumber].prize;
         Lockedtokens[msg.sender] -= reward;
         TokensOwned[_winner] += reward;
         Users[_winner].tokens += reward;
+    }
+
+    // Function to withdraw the funds
+    function withdraw() payable onlyOwner public {
+        payable(msg.sender).transfer(address(this).balance);
     }
 }
 

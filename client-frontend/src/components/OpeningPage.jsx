@@ -1,6 +1,7 @@
-import React from 'react';
+import React from "react";
+import "./OpeningPage.css";
 import NewNavbar from "./NewNavbar";
-import "./OpeningPage.css"
+import Admin from "./Admin/admin";
 
 const OpeningPage = () => {
   return (
@@ -52,4 +53,4 @@ const OpeningPage = () => {
   )
 }
 
-export default OpeningPage
+export default OpeningPage;

@@ -6,25 +6,25 @@
     color: white;
     font-family: 'Manrope', sans-serif;
     font-weight: bold;
-    justify-content: space-around;
+    justify-content: space-between ;
     align-items: center;
     position:fixed;
     width:100vw;
-
 }
 
 .newLogo{
-    margin-left: 30px;
+    margin-left: 70px;
     margin-right : 30px;
 }
 
 .newBtn{
     color: white;
     background-color: black;
-    border: solid white 2px;
+    border: solid white 3px;
     border-radius: 30px;
     padding: 8px;
     margin: 10px;
+    cursor: pointer;
 }
 
 .newImage{
@@ -37,4 +37,5 @@
     justify-content: space-around;
     width:200px;
     align-items: center;
+    margin-right: 5%;
 }

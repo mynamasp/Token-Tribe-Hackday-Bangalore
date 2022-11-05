@@ -1,10 +1,10 @@
 import './App.css';
-import OpeningPage from "./components/OpeningPage.jsx";
+import TokenExchange from "./components/TokenExchange.jsx";
 
 function App() {
   return (
     <div className="App">
-      <OpeningPage/>
+      <TokenExchange/>
     </div>
   );
 }

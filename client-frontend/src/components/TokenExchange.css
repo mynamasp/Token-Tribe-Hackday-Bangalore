@@ -1,0 +1,19 @@
+*{
+    margin:0px;
+    box-sizing: border-box;
+    padding: 0px;
+    text-align: center;
+}
+
+.left_col_inside{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content:space-between ;
+    width: 60%;
+}
+
+.Top_column{
+    padding:10px;
+   
+}

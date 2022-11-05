@@ -1,0 +1,7 @@
+.buttonAni{
+    transition: transform .5s; /* Animation */
+}
+
+.buttonAni:hover{
+    transform: scale(1.2);
+}

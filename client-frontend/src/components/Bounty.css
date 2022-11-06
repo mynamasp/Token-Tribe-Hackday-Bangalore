@@ -1,0 +1,96 @@
+.bountymain{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.sideSec{
+    width: 18%;
+    height: 80vh;
+    border: 2px solid #FF00E5;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#usericonBounty{
+    width: 90px;
+    height: 90px;
+    margin-left: 16%;
+}
+
+.sidesecText{
+    text-align: center;
+    font-family: 'Manrope';
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 160%;
+}
+
+#sideSecIcon{
+    width:300px;
+    align-self: center;
+}
+
+.focusSec{
+    width:60%;
+    margin-left: 80px;
+    margin-right: 60px;
+}
+
+.searchBar{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+input[type="search"] {
+    color: black;
+    border: none;
+    padding: 17px 8px;
+    font-size: 18px;
+    border-radius: 50px;
+    width: 85%;
+}
+
+.searchbtn{
+    width: 50px;
+    height: 50px;
+    border: 2px white solid;
+    border-radius: 50px;
+    margin-left: 20px;
+}
+
+.searchFilter{
+    display: flex;
+    margin-left: 20px;
+}
+
+.filterEle{
+    background-color: white;
+    color: black;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    margin:10px
+}
+
+.filterAll{
+    background-color: #FF00E5;
+    color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    margin:10px
+}
+
+/* -------- */
+
+  
+  

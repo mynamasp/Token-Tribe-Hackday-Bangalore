@@ -1,6 +1,7 @@
 # Database Queries
 
 API URL : `https://g6dxmope.api.sanity.io/v2021-10-21/data/query/production?query={YOUR_QUERY}`
+
 MUTATE URL : `https://${projectId}.api.sanity.io/v2021-06-07/data/mutate/${datasetName}`
 
 ## Queries

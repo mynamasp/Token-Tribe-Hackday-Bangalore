@@ -47,9 +47,9 @@ const OpeningPage = () => {
                 <img style = {{ height:"78vh",alignItems:"flex-end",marginTop:"18vh"}} src= {require("../images/OpeningPage.png")} alt="" />
             </div>
         </div>
-    </div>
-
-  )
-}
+      </div>
+    
+  );
+};
 
 export default OpeningPage;

@@ -1,18 +1,26 @@
 import "./App.css";
+import OpeningPage from "./components/OpeningPage";
 import Admin from "./components/Admin/admin";
-import OpeningPage from "./components/OpeningPage.jsx";
-import MarketLanding from "./components/MarketLanding";
-import TokenExchange from "./components/TokenExchange";
-import ChoosePage from "./components/ChoosePage";
+import {
+    createBrowserRouter,
+    RouterProvider,
+} from "react-router-dom";
+
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: (<OpeningPage />)
+    },
+    {
+        path: 'admin',
+        element: (<Admin />)
+    }
+])
 
 function App() {
     return (
         <div className="App">
-            {/* <OpeningPage />  final*/}
-            {/* <Admin /> */}
-            {/* <MarketLanding/> woek*/ } 
-            {/* <TokenExchange/> wprk*/}
-            <ChoosePage/>
+            <RouterProvider router={router} />
         </div>
     );
 }

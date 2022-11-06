@@ -1,12 +1,11 @@
 import React from "react";
 import "./OpeningPage.css";
 import NewNavbar from "./NewNavbar";
-import Admin from "./Admin/admin";
 
 const OpeningPage = () => {
   return (
     <div>
-        <div style = {{ paddingBottom: "5rem"}}>
+        <div style = {{ paddingBottom: "0rem"}}>
             <NewNavbar/>
         </div>
         <div style = {{
@@ -18,14 +17,13 @@ const OpeningPage = () => {
                 display: "flex",
                 flexDirection :"column",
                 fontFamily:"Manrope,sans-serif",
-                marginTop:"10%",
                 marginLeft:"15%",
-                marginRight:"40%"
+                // marginRight:"40%"
             }}>
                 <span style = {{fontSize:"50px",fontWeight:"bolder"}}>Token Tribe</span>
-                <div style={{fontSize:"35px",marginTop:"2%"}}>
-                    <span >The Only DAO / Community</span>
-                    <span>{" "}platform you will need.</span>
+                <div style={{fontSize:"35px",marginTop:"3%",fontWeight:"560"}}>
+                    <span >The Only DAO / Community<br/></span>
+                    <span style ={{marginRight:"2vw"}}>platform you will need.</span>
 
                 </div>
                 <button style = {{
@@ -36,16 +34,17 @@ const OpeningPage = () => {
                     padding:"20px 20px 20px 20px",
                     fontSize:"20px",
                     fontWeight:"bold",
-                    marginTop:"5%",
+                    marginTop:"7%",
                     width:"55%",
                     cursor:'pointer',
+                    fontFamily:"Manrope,sans-serif",
                 }} className = "buttonAni ">
                     Connect Wallet</button>
             
             </div>
 
             <div>
-                <img style = {{ height:"650px",alignItems:"flex-end"}} src= {require("../images/OpeningPage.png")} alt="" />
+                <img style = {{ height:"78vh",alignItems:"flex-end",marginTop:"18vh"}} src= {require("../images/OpeningPage.png")} alt="" />
             </div>
         </div>
     </div>

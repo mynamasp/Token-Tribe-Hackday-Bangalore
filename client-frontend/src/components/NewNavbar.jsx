@@ -2,6 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { WalletContext } from "../contexts/walletContext";
 import "./NewNavbar.css";
+import MaleLogoNav from "../images/male_logo_nav.png";
 
 const NewNavbar = () => {
   const walletContext = useContext(WalletContext);
@@ -27,11 +28,7 @@ const NewNavbar = () => {
               )}`
             : "Connect Wallet"}
         </button>
-        <img
-          className="newImage"
-          src={require("../images/male_logo_nav.png")}
-          alt=""
-        />
+        <img className="newImage" src={MaleLogoNav} alt="" />
       </div>
     </div>
   );

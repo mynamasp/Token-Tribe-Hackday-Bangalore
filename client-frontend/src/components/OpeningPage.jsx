@@ -4,7 +4,7 @@ import NewNavbar from "./NewNavbar";
 import { WalletContext } from "../contexts/walletContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import OpeningPagePng from "../images/OpeningPage.png";
 const OpeningPage = () => {
   const walletContext = useContext(WalletContext);
   const { currentUser, appStatus } = walletContext;
@@ -143,7 +143,7 @@ const OpeningPage = () => {
               alignItems: "flex-end",
               marginTop: "18vh",
             }}
-            src={require("../images/OpeningPage.png")}
+            src={OpeningPagePng}
             alt=""
           />
         </div>

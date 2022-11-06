@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 const BountyCard = (props) => {
     const { name, description, prize, _id } = props.bountyDetails;
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     return (
         <div className='cardBody' key={_id}>
             <div className='posterprof'>

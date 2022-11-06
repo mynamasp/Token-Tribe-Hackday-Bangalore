@@ -1,17 +1,15 @@
-require("dotenv").config();
 const REACT_APP_ALCHEMY_API_KEY = process.env.REACT_APP_ALCHEMY_API_KEY;
 const alchemyKey = REACT_APP_ALCHEMY_API_KEY;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(alchemyKey);
 
-const contractABI = require("../src/assets/TokenTribeABI.json")
+const contractABI = require("../assets/TokenTribeABI.json")
 const contractAddress = "0xC91C67E52df4a013C88e591daa202fB6Ba159231";
 
 const tokenTribe = new web3.eth.Contract(
     contractABI,
     contractAddress
 );
-
 
 /**************************************  Function to subcribe to bounties   *************************************************** */
 export const subscribeToBounties = async (address) => {
@@ -39,7 +37,7 @@ export const subscribeToBounties = async (address) => {
         return {
             status: (
                 <span>
-                    <a target="_blank" href={`https://mumbai.polygonscan.com/tx/${txHash}`}>
+                    <a href={`https://mumbai.polygonscan.com/tx/${txHash}`}>
                         View the status of your transaction
                     </a>
                     <br />
@@ -89,7 +87,7 @@ export const setBounty = async (address, name, prize, description) => {
         return {
             status: (
                 <span>
-                    <a target="_blank" href={`https://mumbai.polygonscan.com/tx/${txHash}`}>
+                    <a href={`https://mumbai.polygonscan.com/tx/${txHash}`}>
                         View the status of your transaction
                     </a>
                     <br />
@@ -133,7 +131,7 @@ export const closeBounty = async (address, winner_address, bounty_number) => {
         return {
             status: (
                 <span>
-                    <a target="_blank" href={`https://mumbai.polygonscan.com/tx/${txHash}`}>
+                    <a href={`https://mumbai.polygonscan.com/tx/${txHash}`}>
                         View the status of your transaction
                     </a>
                     <br />
@@ -177,7 +175,7 @@ export const buyTokens = async (address, amount) => {
         return {
             status: (
                 <span>
-                    <a target="_blank" href={`https://mumbai.polygonscan.com/tx/${txHash}`}>
+                    <a href={`https://mumbai.polygonscan.com/tx/${txHash}`}>
                         View the status of your transaction
                     </a>
                     <br />
@@ -196,7 +194,7 @@ export const buyTokens = async (address, amount) => {
 
 export const getBalance = async (address) => {
 
-    balance = await contract.methods.balanceOf(address);
+    let balance = await tokenTribe.methods.balanceOf(address);
 
     return balance;
 }
@@ -205,7 +203,7 @@ export const getBalance = async (address) => {
 
 export const getTokenBalance = async (address) => {
 
-    balance = await contract.TokensOwned.call(address);
+    let balance = await tokenTribe.methods.TokensOwned(address).call();
 
     return balance;
 }

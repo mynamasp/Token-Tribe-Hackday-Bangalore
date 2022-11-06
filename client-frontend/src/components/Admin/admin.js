@@ -1,8 +1,9 @@
 import React, { useState, useContext, useEffect } from "react";
 import { BountyContext } from "../../contexts/bountyContext";
 import { WalletContext } from "../../contexts/walletContext";
-import NavBar from "../Navbar";
 import { useNavigate } from "react-router-dom";
+import RoundBall from "../../images/round-ball.png";
+import NewNavbar from "../NewNavbar";
 
 const Admin = () => {
     const [activeSelection, setActiveState] = useState(true);
@@ -31,7 +32,7 @@ const Admin = () => {
     return (
         <>
             <div >
-                <NavBar />
+                <NewNavbar />
             </div>
             <div
                 style={{
@@ -48,7 +49,7 @@ const Admin = () => {
                         style={{
                             width: "30rem",
                         }}
-                        src={require("../../images/round-ball.png")}
+                        src={RoundBall}
                         alt=""
                     />
                     <div
@@ -86,7 +87,7 @@ const Admin = () => {
                                 cursor: "pointer",
                                 display: "inline",
                             }}
-                        >
+                            onClick={() => { navigate('/buytoken') }}>
                             <p
                                 style={{
                                     backgroundColor: "#FF00E5",

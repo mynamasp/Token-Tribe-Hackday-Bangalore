@@ -46,6 +46,24 @@ export const BountyProvider = ({ children }) => {
         }
     }
 
+    const getBountyComments = (bountyId) => {
+        if (!window.ethereum) return setAppStatus('no MetaMask')
+        try {
+            const query = `*[_type == "user" && bounty == "${bountyId}"]
+`
+        } catch (error) {
+            setAppStatus('error');
+        }
+    }
+
+    const getBountyDetails = (bountyId) => {
+
+    }
+
+    const addCommentBounty = (bountyId, content) => {
+
+    }
+
     return (
         <BountyContext.Provider value={{
             bounties,

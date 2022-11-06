@@ -1,10 +1,10 @@
 import "./App.css";
-import OpeningPage from "./components/OpeningPage.jsx";
+import TokenTribe from "./components/LeaderBoard";
 
 function App() {
   return (
     <div className="App">
-      <OpeningPage />
+      <TokenTribe />
     </div>
   );
 }

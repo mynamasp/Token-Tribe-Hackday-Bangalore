@@ -3,9 +3,10 @@ import { BountyContext } from "../../contexts/bountyContext";
 import { WalletContext } from "../../contexts/walletContext";
 import NavBar from "../Navbar";
 import { useNavigate } from "react-router-dom";
+import './SetupAdmin.css';
 
 const Admin = () => {
-    const [activeSelection, setActiveState] = useState(true);
+    const [activeSelection, setActiveState] = useState(false);
     // context
     const bountyContext = useContext(BountyContext);
     const { getBounties, bounties } = bountyContext;
@@ -161,9 +162,10 @@ const Admin = () => {
                 </div>
             </div>
             <div style={{ margin: "2rem auto", width: "50rem" }}>
-                {bounties?.map((item, index) => (
+                {!activeSelection ? bounties?.map((item, index) => (
                     <Card key={index} {...item} />
-                ))}
+                )) :(<Setup/>)}
+                
             </div>
         </>
     );
@@ -221,3 +223,30 @@ const Card = ({ name, description, prize }) => {
         </div>
     );
 };
+
+const Setup = ()=>{
+    return(
+        <>
+        <div className="setupMain">
+            <div> Enter Your Task Title : </div>
+            <input class="setupInput" type="text"></input>
+            <div> Task Description : </div>
+            <input class="setupInput" type="text"></input>
+            <div className="splitHead" style={{marginTop:'30px'}}>
+                <div style={{paddingLeft:'30px'}}> Bounty Offered (In $Tribe): </div>
+                <div style={{paddingRight:'30px'}}> $Tribe Available: </div>
+            </div>
+            <div className="splitHead">
+                <input class="setupInputHalf" type="text"></input>
+                <div style={{fontWeight:'bold',fontSize:'x-large',marginRight:'30px'}}> 1500 $Tribe </div>
+            </div>
+            <div className="buymore">
+                <div>Running low on $Tribe </div>
+                <button className="buynow">Buy Now</button>
+            </div>
+        </div>
+        <div style={{margin:'auto',marginTop:'50px'}}>You still have 3 Posts available</div>
+        <button class="bigbtn"> {'> >'} Continue {'< <'} </button>
+        </>
+    )
+}

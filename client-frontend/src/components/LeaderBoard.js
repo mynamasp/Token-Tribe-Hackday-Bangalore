@@ -11,7 +11,11 @@ const Leaderboard = () => {
         { no: 3, name: "LadyAmberStar", bounties: 71 },
         { no: 4, name: "DaBoss420", bounties: 70 },
         { no: 5, name: "ProgrammerSID", bounties: 69 },
-        { no: 6, name: "StewartLittlePP", bounties: 65 },
+        { no: 6, name: "LuciferMorNingStar", bounties: 66 },
+        { no: 7, name: "NickolusCrown", bounties: 63 },
+        { no: 8, name: "HailHydra666", bounties: 60 },
+        { no: 9, name: "HariPuttar2002", bounties: 59 },
+        { no: 10, name: "StewartLittlePP", bounties: 56 }
     ];
     const RenderList = Tribles.map((person) => {
         return (<TribeCard person={person}></TribeCard>);

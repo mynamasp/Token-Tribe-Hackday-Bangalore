@@ -1,0 +1,76 @@
+.setupMain{
+    color:white;
+    font-weight: 800;
+    font-size: large;
+    width:100%;
+    border: 2px solid #FF00E5;
+    border-radius: 50px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: linear-gradient(180deg, #86127E 0%, #5001A3 100%);
+}
+
+.setupInput{
+    background: black;
+    color: white;
+    border: 2px solid #FF00E5;
+    outline: none;
+    width: 75%;
+    font-size: large;
+    padding: 5px;
+    border-radius: 20px;
+    margin:10px;
+}
+
+.setupInputHalf{
+    background: black;
+    color: white;
+    border: 2px solid #FF00E5;
+    outline: none;
+    width: 25%;
+    font-size: large;
+    padding: 5px;
+    border-radius: 20px;
+    margin-left: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.splitHead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.buymore{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 20px;
+    font-size: medium;
+    font-weight: 500;
+}
+
+.buynow{
+    background: #FF00E5;
+    padding:10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color:white;
+    border: 0;
+    border-radius: 20px;
+    margin-left: 15px;
+}
+
+.bigbtn{
+    font-weight: bold;
+    font-size: x-large;
+    padding: 10px;
+    background: transparent;
+    border: 3px solid #FF00E5;
+    color: white;
+    border-radius: 40px;
+    margin-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}

@@ -35,7 +35,7 @@
     padding-top: 4vh;
 }
 
-.btn{
+.btnnn{
     position: relative;
     width: 15vw;
     color: white;
@@ -49,7 +49,7 @@
     transition: transform .8s;
 
 }
-.btn2{
+.btnnn2{
     background: #7000FF;
 }
 
@@ -68,9 +68,8 @@
     
 }
 
-.btn:hover{
+.btnnn:hover{
     cursor: pointer;
-    background: #ceb545;
     transform: scale(1.1);
 }
 .img:hover{

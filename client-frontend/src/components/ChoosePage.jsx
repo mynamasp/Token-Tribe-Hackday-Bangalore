@@ -48,7 +48,7 @@ const ChoosePage = () => {
               src={require("../images/choosePageLeft.png")}
               alt=""
             />
-            <button className="btn" onClick={() => registerUser(name, 1)}>
+            <button className="btnnn" onClick={() => registerUser(name, 1)}>
               Admin
             </button>
           </div>
@@ -58,7 +58,7 @@ const ChoosePage = () => {
               src={require("../images/choosePageRight.png")}
               alt=""
             />
-            <button className="btn btn2" onClick={() => registerUser(name, 0)}>
+            <button className="btnnn btnnn2" onClick={() => registerUser(name, 0)}>
               Contributor
             </button>
           </div>

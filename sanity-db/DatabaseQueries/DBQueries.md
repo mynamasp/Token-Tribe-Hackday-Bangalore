@@ -97,10 +97,6 @@ const bountyDoc = {
     _key : `${currentAccount}_${Date.now()}`,
     _ref : currentAccount,
     _type : "reference"
-  },
-  comments : {
-    type : "array",
-    of : [_type : "reference", to : [{type : "comments"}]]
   }
 };
 

@@ -8,7 +8,11 @@ import {
     RouterProvider,
     useNavigate
 } from "react-router-dom";
+
 import CommentPage from "./components/CommentPage";
+import TokenExchange from "./components/TokenExchange";
+import ChoosePage from "./components/ChoosePage";
+
 
 const router = createBrowserRouter([
     {
@@ -30,7 +34,18 @@ const router = createBrowserRouter([
     {
       path: 'bounty/comments' ,
       element: (<CommentPage/>)//Navbar needed
+        path: 'leaderboard',
+        element: (<Leaderboard />)
+    },
+    {
+        path: 'buytoken',
+        element: (<TokenExchange />)
+    },
+    {
+        path: 'register',
+        element: (<ChoosePage />)
     }
+
 ])
 
 function App() {

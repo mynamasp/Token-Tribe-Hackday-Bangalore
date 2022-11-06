@@ -30,7 +30,7 @@ const Admin = () => {
 
     return (
         <>
-            <div>
+            <div >
                 <NavBar />
             </div>
             <div

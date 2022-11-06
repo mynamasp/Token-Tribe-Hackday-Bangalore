@@ -54,6 +54,7 @@
     flex-direction: row;
     justify-content: space-evenly; 
     
+    
 
 }
 
@@ -94,4 +95,86 @@
     transform: scale(1.03);
 }
 
+.end_feild{
+    margin-top: 40px;
+    border : solid black;
+    background-color: black;
+    display: flex;
+    color: white;
+    margin-left: 100px;
+    margin-right: 100px;  
+    padding: 1rem 5rem;
+    border-radius: 40px;
+    border : 3px solid #e43fc7;
+    font-family: 'Manrope', sans-serif;
+    color:#e43fc7;
+    cursor: pointer;  
+    
 
+  }
+  
+  .arrow{
+  margin: auto;
+  height:30px;
+  width:40px;
+  }
+
+ .ragul{
+    margin: 5rem auto;
+    background: linear-gradient(to bottom, #86127E 0%, #5001A3 100%);
+    width: 50vw;
+    border: solid #e43fc7 3px;
+    border-radius: 30px;
+    padding:20px;
+    margin-top: 20vw;
+    margin-bottom:15vw;
+ }
+
+.sarthak{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.first_feild{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.first_feild > input{
+    width: 17vw;
+    margin-top: 2vh;
+    border: solid #e43fc7 3px;
+    border-radius: 20px;
+    background-color: black;
+    color:white;
+    height: 6vh;
+    margin-bottom: 3vh;
+    
+}
+.middle_feild{
+    border: solid #e43fc7 3px;
+    border-radius: 20px;
+    background-color: black;
+    color:white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+    justify-content: center;
+    padding: 15px;
+    width: 25vw;
+    height: 10vh;
+}
+.right_feild > img{
+    height: 30px;
+    
+}
+.right_feild{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}

@@ -21,6 +21,7 @@ const ChoosePage = () => {
         navigate("/");
       }
     }
+    // eslint-disable-next-line
   }, [currentUser]);
 
   return (
@@ -58,7 +59,10 @@ const ChoosePage = () => {
               src={require("../images/choosePageRight.png")}
               alt=""
             />
-            <button className="btnnn btnnn2" onClick={() => registerUser(name, 0)}>
+            <button
+              className="btnnn btnnn2"
+              onClick={() => registerUser(name, 0)}
+            >
               Contributor
             </button>
           </div>

@@ -7,7 +7,6 @@ import Leaderboard from "./components/LeaderBoard";
 import {
     createBrowserRouter,
     RouterProvider,
-    useNavigate
 } from "react-router-dom";
 
 import CommentPage from "./components/CommentPage";
@@ -25,21 +24,16 @@ const router = createBrowserRouter([
         element: (<Admin />)
     },
     {
-      path: 'leaderboard' ,
-      element: (<LeaderBoard/>)//Navbar needed
+        path: 'leaderboard',
+        element: (<LeaderBoard />)
     },
     {
-      path: 'bounty' ,
-      element: (<Bounty/>)//Navbar needed
+        path: 'bounty',
+        element: (<Bounty />)
     },
     {
-      path: 'bounty/comments' ,
-      element: (<CommentPage/>)//Navbar needed
-        
-    },
-    {
-      path: 'leaderboard',
-      element: (<Leaderboard />)
+        path: 'bounty/:bountyId',
+        element: (<CommentPage />)
     },
     {
         path: 'buytoken',

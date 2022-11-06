@@ -1,9 +1,10 @@
 import React, { useState, useContext, useEffect } from "react";
 import { BountyContext } from "../../contexts/bountyContext";
 import { WalletContext } from "../../contexts/walletContext";
-import NavBar from "../Navbar";
 import { useNavigate } from "react-router-dom";
 import './SetupAdmin.css';
+import RoundBall from "../../images/round-ball.png";
+import NewNavbar from "../NewNavbar";
 
 const Admin = () => {
     const [activeSelection, setActiveState] = useState(false);
@@ -32,7 +33,7 @@ const Admin = () => {
     return (
         <>
             <div >
-                <NavBar />
+                <NewNavbar />
             </div>
             <div
                 style={{
@@ -49,7 +50,7 @@ const Admin = () => {
                         style={{
                             width: "30rem",
                         }}
-                        src={require("../../images/round-ball.png")}
+                        src={RoundBall}
                         alt=""
                     />
                     <div
@@ -87,7 +88,7 @@ const Admin = () => {
                                 cursor: "pointer",
                                 display: "inline",
                             }}
-                        >
+                            onClick={() => { navigate('/buytoken') }}>
                             <p
                                 style={{
                                     backgroundColor: "#FF00E5",
@@ -164,8 +165,8 @@ const Admin = () => {
             <div style={{ margin: "2rem auto", width: "50rem" }}>
                 {!activeSelection ? bounties?.map((item, index) => (
                     <Card key={index} {...item} />
-                )) :(<Setup/>)}
-                
+                )) : (<Setup />)}
+
             </div>
         </>
     );
@@ -224,29 +225,29 @@ const Card = ({ name, description, prize }) => {
     );
 };
 
-const Setup = ()=>{
-    return(
+const Setup = () => {
+    return (
         <>
-        <div className="setupMain">
-            <div> Enter Your Task Title : </div>
-            <input class="setupInput" type="text"></input>
-            <div> Task Description : </div>
-            <input class="setupInput" type="text"></input>
-            <div className="splitHead" style={{marginTop:'30px'}}>
-                <div style={{paddingLeft:'30px'}}> Bounty Offered (In $Tribe): </div>
-                <div style={{paddingRight:'30px'}}> $Tribe Available: </div>
+            <div className="setupMain">
+                <div> Enter Your Task Title : </div>
+                <input class="setupInput" type="text"></input>
+                <div> Task Description : </div>
+                <input class="setupInput" type="text"></input>
+                <div className="splitHead" style={{ marginTop: '30px' }}>
+                    <div style={{ paddingLeft: '30px' }}> Bounty Offered (In $Tribe): </div>
+                    <div style={{ paddingRight: '30px' }}> $Tribe Available: </div>
+                </div>
+                <div className="splitHead">
+                    <input class="setupInputHalf" type="text"></input>
+                    <div style={{ fontWeight: 'bold', fontSize: 'x-large', marginRight: '30px' }}> 1500 $Tribe </div>
+                </div>
+                <div className="buymore">
+                    <div>Running low on $Tribe </div>
+                    <button className="buynow">Buy Now</button>
+                </div>
             </div>
-            <div className="splitHead">
-                <input class="setupInputHalf" type="text"></input>
-                <div style={{fontWeight:'bold',fontSize:'x-large',marginRight:'30px'}}> 1500 $Tribe </div>
-            </div>
-            <div className="buymore">
-                <div>Running low on $Tribe </div>
-                <button className="buynow">Buy Now</button>
-            </div>
-        </div>
-        <div style={{margin:'auto',marginTop:'50px'}}>You still have 3 Posts available</div>
-        <button class="bigbtn"> {'> >'} Continue {'< <'} </button>
+            <div style={{ margin: 'auto', marginTop: '50px' }}>You still have 3 Posts available</div>
+            <button class="bigbtn"> {'> >'} Continue {'< <'} </button>
         </>
     )
 }

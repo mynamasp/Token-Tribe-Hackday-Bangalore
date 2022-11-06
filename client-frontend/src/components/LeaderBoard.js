@@ -18,13 +18,13 @@ const TokenTribe = () => {
     });
   return (
     <div>
-        <header className='header spacing'>
+        {/* <header className='header spacing'>
             <p id="TokenTribe">Token Tribe</p>
             <div className='headere'>
                 <button id="connectWallet">Connect Wallet</button>
                 <div id="usericon"></div>
             </div>
-        </header>
+        </header> */}
         <div className='displaycards'>
             <img className='bg fade-image' src={bg}></img>
             <div id="text1">What our top contributors get</div>

@@ -34,18 +34,19 @@ const OpeningPage = () => {
             flexDirection: "column",
             fontFamily: "Manrope,sans-serif",
             marginLeft: "15%",
+            alignItems:"flex-start",
             // marginRight:"40%"
           }}
         >
-          <span style={{ fontSize: "50px", fontWeight: "bolder" }}>
+          <span style={{ fontSize: "50px", fontWeight: "bolder" ,marginTop:"30vh"}}>
             Token Tribe
           </span>
-          <div style={{ fontSize: "35px", marginTop: "3%", fontWeight: "560" }}>
+          <div style={{ fontSize: "35px" ,marginTop: "4vh", fontWeight: "560" , display:"flex" , flexDirection:"column",alignItems:"flex-start" }}>
             <span>
               The Only DAO / Community
-              <br />
             </span>
-            <span style={{ marginRight: "2vw" }}>platform you will need.</span>
+       
+            <span>platform you will need.</span>
           </div>
           <button
             style={{

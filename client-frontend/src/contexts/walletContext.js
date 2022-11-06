@@ -9,7 +9,7 @@ export const WalletProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState({})
 
     useEffect(() => {
-        checkIfWalletIsConnected()
+        checkIfWalletIsConnected();
         // eslint-disable-next-line
     }, [])
 
@@ -101,28 +101,35 @@ export const WalletProvider = ({ children }) => {
         })
     }
 
-    const registerUser = async (userAccount = currentAccount, name) => {
-        const query = `
-        *[_type == "users" && _id == "${userAccount}"]{
-            name,
-            admin,
-            registered,
-            walletAddress
+    const registerUser = async (name, type) => {
+
+        if (type === 0) {
+            await client.patch(currentAccount).set({
+                admin: false,
+                registered: true,
+                name: name
+            }).commit().then((updatedUser) => {
+                console.log('Hurray, the user is updated! New document:')
+                console.log(updatedUser);
+                setCurrentUser(updatedUser);
+            }).catch((err) => {
+                console.error('Oh no, the update failed: ', err.message)
+            })
+        } else if (type === 1) {
+            await client.patch(currentAccount).set({
+                admin: true,
+                registered: true,
+                name: name
+            }).commit().then((updatedUser) => {
+                console.log('Hurray, the user is updated! New document:')
+                console.log(updatedUser);
+                setCurrentUser(updatedUser);
+            }).catch((err) => {
+                console.error('Oh no, the update failed: ', err.message)
+            })
+        } else {
+            console.log("Nothing to do :)");
         }
-        `
-        const response = await client.fetch(query);
-        if (response[0].registered) {
-            return;
-        }
-        await client.patch(currentAccount).set({
-            registered: true,
-            name: name
-        }).commit().then((updatedUser) => {
-            console.log('Hurray, the user is updated! New document:')
-            console.log(updatedUser)
-        }).catch((err) => {
-            console.error('Oh no, the update failed: ', err.message)
-        })
     }
 
     return (

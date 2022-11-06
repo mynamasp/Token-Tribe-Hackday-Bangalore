@@ -3,6 +3,7 @@ import OpeningPage from "./components/OpeningPage";
 import Admin from "./components/Admin/admin";
 import LeaderBoard from './components/LeaderBoard';
 import Bounty from './components/Bounty';
+import Leaderboard from "./components/LeaderBoard";
 import {
     createBrowserRouter,
     RouterProvider,

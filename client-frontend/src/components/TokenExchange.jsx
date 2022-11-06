@@ -1,7 +1,9 @@
 import React from "react";
-import Navbar from "./Navbar.jsx";
 import "./Navbar.css";
 import "./TokenExchange.css";
+import NewNavbar from "./NewNavbar.jsx";
+import LeftArrowPng from "../images/tokenExchange/left.png";
+import RightArrowPng from "../images/tokenExchange/right.png";
 
 const LastPart = () => {
   const maticToken = 123.45;
@@ -32,17 +34,9 @@ const LastPart = () => {
         </div>
 
         <div className="end_feild">
-          <img
-            className="arrow"
-            src={require("../images/tokenExchange/left.png")}
-            alt=""
-          />
+          <img className="arrow" src={LeftArrowPng} alt="" />
           <h2>Mint Now</h2>
-          <img
-            className="arrow"
-            src={require("../images/tokenExchange/right.png")}
-            alt=""
-          />
+          <img className="arrow" src={RightArrowPng} alt="" />
         </div>
       </div>
     </div>
@@ -61,10 +55,11 @@ const Cards = ({ numb, head }) => {
 
 const TokenExchange = () => {
   const tribeToken = 123;
+
   return (
     <div>
       <div style={{ paddingBottom: "5rem" }}>
-        <Navbar />
+        <NewNavbar />
       </div>
 
       <div className="Top_column">
@@ -72,7 +67,6 @@ const TokenExchange = () => {
 
         <div className="right_col_inside">
           <span>{tribeToken} $Tribe</span>
-          <button>+</button>
         </div>
       </div>
 
@@ -82,7 +76,9 @@ const TokenExchange = () => {
         <Cards numb={10} />
       </div>
 
-      <div className="neeche_wala"></div>
+      <div className="neeche_wala">
+        <LastPart />
+      </div>
     </div>
   );
 };

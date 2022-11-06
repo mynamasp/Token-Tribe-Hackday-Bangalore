@@ -18,6 +18,7 @@ const OpeningPage = () => {
                 flexDirection :"column",
                 fontFamily:"Manrope,sans-serif",
                 marginLeft:"15%",
+                marginTop:"30vh",
                 // marginRight:"40%"
             }}>
                 <span style = {{fontSize:"50px",fontWeight:"bolder"}}>Token Tribe</span>

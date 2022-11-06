@@ -6,6 +6,8 @@ import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+import TokenExchange from "./components/TokenExchange";
+import ChoosePage from "./components/ChoosePage";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +22,14 @@ const router = createBrowserRouter([
         path: 'leaderboard',
         element: (<Leaderboard />)
     },
+    {
+        path: 'buytoken',
+        element: (<TokenExchange />)
+    },
+    {
+        path: 'register',
+        element: (<ChoosePage />)
+    }
 
 ])
 

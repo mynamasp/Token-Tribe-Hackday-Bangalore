@@ -3,6 +3,44 @@ import Navbar from "./Navbar.jsx";
 import "./Navbar.css";
 import "./TokenExchange.css"
 
+const LastPart = () => {
+    const maticToken = 123.45;
+    const tribeToke = 123;
+    return (
+        <div className=''>
+            <div className='ragul'>
+            <div className='first_feild'>
+                <span>Enter amount of $ Tribe</span>
+                <input className='input_feild' type="text" name="" id="" />
+            </div>
+
+            <div className='middle_feild'>
+                <div className='left_feild'>
+                    <span>{tribeToke}</span>
+                    <span>$ Tribe</span>
+                </div>
+
+                <div className='middle_middle_feild'>
+                    <span>=</span>
+                </div>
+
+                <div className='right_feild'>
+                    <img src={require("../images/tokenExchange/polygon.png")} alt="" />
+                    <span>{maticToken}</span>
+                    <span>Matic</span>
+                </div>
+            </div>
+
+            <div className="end_feild">
+                <img className = "arrow" src={require("../images/tokenExchange/left.png")} alt=""/>
+                <h2>Mint Now</h2>
+                <img className = "arrow" src={require("../images/tokenExchange/right.png")} alt=""/>
+            </div>
+        </div>
+        </div>
+    )
+}
+
 const Cards = ({numb,head}) =>{
     return(
         <div className='cards' >
@@ -15,7 +53,6 @@ const Cards = ({numb,head}) =>{
 
 const TokenExchange = () => {
     const tribeToken = 123;
-    const maticToken = 123.45;
   return (
     <div>
       <div style = {{paddingBottom: "5rem"}}>
@@ -37,8 +74,8 @@ const TokenExchange = () => {
         <Cards numb = {10}/>
       </div>
 
-      <div className='neeche_wala'>
-
+      <div className='laast'>
+        <LastPart/>
       </div>
     </div>
   )

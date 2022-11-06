@@ -6,7 +6,6 @@ import Bounty from './components/Bounty';
 import {
     createBrowserRouter,
     RouterProvider,
-    useNavigate
 } from "react-router-dom";
 
 import CommentPage from "./components/CommentPage";
@@ -24,18 +23,16 @@ const router = createBrowserRouter([
         element: (<Admin />)
     },
     {
-      path: 'leaderboard' ,
-      element: (<LeaderBoard/>)//Navbar needed
-    },
-    {
-      path: 'bounty' ,
-      element: (<Bounty/>)//Navbar needed
-    },
-    {
-      path: 'bounty/comments' ,
-      element: (<CommentPage/>)//Navbar needed
         path: 'leaderboard',
-        element: (<Leaderboard />)
+        element: (<LeaderBoard />)
+    },
+    {
+        path: 'bounty',
+        element: (<Bounty />)
+    },
+    {
+        path: 'bounty/:bountyId',
+        element: (<CommentPage />)
     },
     {
         path: 'buytoken',

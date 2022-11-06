@@ -21,6 +21,7 @@ const ChoosePage = () => {
         navigate("/");
       }
     }
+    // eslint-disable-next-line
   }, [currentUser]);
 
   return (

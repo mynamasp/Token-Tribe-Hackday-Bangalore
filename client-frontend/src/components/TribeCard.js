@@ -4,7 +4,7 @@ import usericon from '../images/MaleUser.png'
 
 const TribeCard = (props) => {
     const {no,name,bounties} = props.person;
-    if(no==1){
+    if(no===1){
         return(
             <div className='cardbody'>
                 <div id="num" className='no1'>{no}</div>
@@ -14,7 +14,7 @@ const TribeCard = (props) => {
             </div>
         )
     }
-    else if(no==2){
+    else if(no===2){
         return(
             <div className='cardbody'>
                 <div id="num" className='no2'>{no}</div>
@@ -24,7 +24,7 @@ const TribeCard = (props) => {
             </div>
         )
     }
-    else if(no==3){
+    else if(no===3){
         return(
             <div className='cardbody'>
                 <div id="num" className='no3'>{no}</div>

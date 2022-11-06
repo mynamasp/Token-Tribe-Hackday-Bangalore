@@ -1,6 +1,7 @@
 import "./App.css";
 import OpeningPage from "./components/OpeningPage";
 import Admin from "./components/Admin/admin";
+import Leaderboard from "./components/LeaderBoard";
 import {
     createBrowserRouter,
     RouterProvider,
@@ -14,7 +15,12 @@ const router = createBrowserRouter([
     {
         path: 'admin',
         element: (<Admin />)
-    }
+    },
+    {
+        path: 'leaderboard',
+        element: (<Leaderboard />)
+    },
+
 ])
 
 function App() {

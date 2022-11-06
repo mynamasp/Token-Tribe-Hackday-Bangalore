@@ -1,0 +1,16 @@
+#CommentHead{
+    display: flex;
+    align-items: center;
+}
+
+#commentername{
+    margin: 20px;
+    font-size: x-large;
+    font-weight: 600;
+}
+
+#commentbody{
+    margin-left: 60px;
+    font-size: larger;
+    margin-bottom: 30px;
+}

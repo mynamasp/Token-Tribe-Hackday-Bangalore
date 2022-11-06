@@ -1,0 +1,43 @@
+.cardBody{
+    border: 2px solid #FF00E5;
+    margin: 20px;
+    border-radius: 50px;
+    width: 90%;
+}
+.posterprof{
+    display: flex;
+    align-items: center;
+}
+#boutnycardpfp{
+    width:50px;
+    margin: 16px;
+}
+#postername{
+    font-size: x-large;
+    margin-left: 8px;
+}
+.postercontent{
+    padding-left: 30px;
+    padding-right: 10px;
+    font-size: large;
+}
+.postFoot{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#postreward{
+    font-size: x-large;
+    font-weight: 800;
+    padding-left: 30px;
+}
+#comments{
+    background: transparent;
+    border: 0;
+    padding-right: 30px;
+}
+#comments img{
+    width: 50px;
+}

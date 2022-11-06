@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import NavBar from "../Navbar";
 
 const Admin = () => {
   const [activeSelection, setActiveState] = useState(true);
@@ -11,6 +12,9 @@ const Admin = () => {
 
   return (
     <>
+      <div>
+        <NavBar/>
+      </div>
       <div
         style={{
           paddingTop: "5rem",

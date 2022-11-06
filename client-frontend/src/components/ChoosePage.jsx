@@ -4,12 +4,16 @@ import NewNavbar from "./NewNavbar";
 
 const ChoosePage = () => {
   return (
-    <div >
-      <div style={{ paddingBottom: "5rem" }}>
+    <div className="ChoosePage">
+      <div style={{ paddingBottom: "4.5rem" }}>
         <NewNavbar />
       </div>
 
       <div className="whole_div bg_img">
+        <div className="upparWalaKhokka">
+          <h2 style = {{marginRight:"2vh"}}>Name : </h2>
+          <input type="text" name="" id="formInput" />
+        </div>
         <h1>Which side are you on ?</h1>
 
         <div className="overall_section">

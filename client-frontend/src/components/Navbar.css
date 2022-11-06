@@ -10,8 +10,11 @@
     align-items: center;
     position:fixed;
     width:100vw;
+    z-index: 99;
+    transition: transform .7s;
 
 }
+
 
 .logo{
     margin-left: 30px;
@@ -25,6 +28,11 @@
     border-radius: 30px;
     padding: 8px;
     margin: 10px;
+    transition: transform .7s;
+}
+.btn:hover{
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 .image{
@@ -36,6 +44,12 @@
     width: 600px;
     display: flex;
     justify-content: center;
+    transition: transform .10s;
+}
+
+.Middle >span:hover{
+    transform: scale(1.2);
+    cursor: pointer;
 }
 
 .Middle > span {

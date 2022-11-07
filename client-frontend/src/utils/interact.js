@@ -1,10 +1,13 @@
+import { ethers } from "ethers";
+
 const REACT_APP_ALCHEMY_API_KEY = process.env.REACT_APP_ALCHEMY_API_KEY;
 const alchemyKey = REACT_APP_ALCHEMY_API_KEY;
 const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(alchemyKey);
 
 const contractABI = require("../assets/TokenTribeABI.json")
-const contractAddress = "0xC91C67E52df4a013C88e591daa202fB6Ba159231";
+const contractAddress = "0xf823fB3196d4e1bF9a096C35E9d035bfBF3B6A43";
+
 
 const tokenTribe = new web3.eth.Contract(
     contractABI,
@@ -149,7 +152,7 @@ export const closeBounty = async (address, winner_address, bounty_number) => {
 
 /**************************************  Function to purchase coins   *************************************************** */
 
-export const buyTokens = async (address, amount) => {
+export const buyTokens = async (address, amount, matics) => {
 
     //Check if wallet is still connected
     if (!window.ethereum || address === null) {
@@ -159,11 +162,15 @@ export const buyTokens = async (address, amount) => {
         };
     }
 
+    const parsedAmount = ethers.utils.parseEther(String(matics));
+
     //Initialise the transcation parameters
     const transactionParameters = {
         to: contractAddress,
         from: address,
         data: tokenTribe.methods.buyTokens(amount).encodeABI(),
+        value: parsedAmount._hex,
+        gas: '0x7EF40',
     };
 
     //Sign the transcation
@@ -209,3 +216,44 @@ export const getTokenBalance = async (address) => {
 }
 
 
+export const getMaticPrice = async () => {
+    let req = await tokenTribe.methods.getMaticPrice().call();
+
+    return req * 83 / (1000000000 * 1000000000);
+}
+
+export const subscribedBounties = async (address) => {
+    const parsedAmount = ethers.utils.parseEther(String(1000));
+
+    //Initialise the transcation parameters
+    const transactionParameters = {
+        to: contractAddress,
+        from: address,
+        data: tokenTribe.methods.SubscribeToBounties().encodeABI(),
+        value: parsedAmount._hex,
+        gas: '0x7EF40',
+    };
+
+    //Sign the transcation
+    try {
+        const txHash = await window.ethereum.request({
+            method: "eth_sendTransaction",
+            params: [transactionParameters],
+        });
+        return {
+            status: (
+                <span>
+                    <a href={`https://mumbai.polygonscan.com/tx/${txHash}`}>
+                        View the status of your transaction
+                    </a>
+                    <br />
+                    Thank you for your purchasse, your tokens will be added soon !
+                </span>
+            ),
+        };
+    } catch (error) {
+        return {
+            status: " Sorry : " + error.message,
+        };
+    }
+}

@@ -1,12 +1,13 @@
 import { createContext, useState, useEffect } from "react";
 import { client } from "../lib/client";
-
+import { ethers } from 'ethers';
 export const WalletContext = createContext();
 
 export const WalletProvider = ({ children }) => {
     const [appStatus, setAppStatus] = useState('')
     const [currentAccount, setCurrentAccount] = useState('')
     const [currentUser, setCurrentUser] = useState({})
+    const [accountBalance, setAccountBalance] = useState(0);
 
     useEffect(() => {
         checkIfWalletIsConnected();
@@ -34,6 +35,16 @@ export const WalletProvider = ({ children }) => {
             }
         } catch (err) {
             setAppStatus('error')
+        }
+    }
+
+    const getAccountBalance = async () => {
+        try {
+            if (!window.ethereum) return alert("Please install metamask");
+            const balance = await window.ethereum.request({ method: 'eth_getBalance', params: [currentAccount, 'latest'] });
+            setAccountBalance(ethers.utils.formatEther(balance));
+        } catch (error) {
+            console.log(error);
         }
     }
 
@@ -142,7 +153,9 @@ export const WalletProvider = ({ children }) => {
             getCurrentUserDetails,
             registerUser,
             createUserAccount,
-            checkIfWalletIsConnected
+            checkIfWalletIsConnected,
+            getAccountBalance,
+            accountBalance
         }}>
             {children}
         </WalletContext.Provider>

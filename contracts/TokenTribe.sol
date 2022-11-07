@@ -122,15 +122,20 @@ contract TokenTribe {
             "You need to buy atleast 10 tokens"
         );
         uint256 amountToPurchase = _amount.mul(12).div(10);
-        require(amountToPurchase == getInrPrice(_amount), "Insufficient funds");
+        uint256 comparision = getMaticPrice() * usdToInr;
+        uint256 finalReq = amountToPurchase / comparision;
+        require(msg.value >= finalReq, "Insufficient funds");
         TokensOwned[msg.sender] += _amount;
         Users[msg.sender].tokens += _amount;
     }
 
     // Function to subscribe
     function SubscribeToBounties() public payable onlyAdmin {
+        uint256 amountToPurchase = (1000 * 12) / 10;
+        uint256 comparision = getMaticPrice() * usdToInr;
+        uint256 finalReq = amountToPurchase / comparision;
         require(
-            getInrPrice(1200) == msg.value,
+            msg.value >= finalReq,
             "To subscribe you need to spend Rs. 1000 worth of matic tokens"
         );
         Subscribed[msg.sender] = true;

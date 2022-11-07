@@ -174,7 +174,8 @@ const Admin = () => {
 
 export default Admin;
 
-const Card = ({ name, description, prize }) => {
+const Card = ({ name, description, prize, _id }) => {
+    const navigate = useNavigate()
     return (
         <div
             style={{
@@ -185,7 +186,8 @@ const Card = ({ name, description, prize }) => {
                 margin: "1rem 0",
             }}
         >
-            <h3>{name}</h3>
+            <h3 onClick={() => navigate(`/bounty/${_id}`)} style={{ cursor: 'pointer', color: '#FF00E5' }}>{name}</h3>
+            <br></br>
             <p>
                 {description}
             </p>

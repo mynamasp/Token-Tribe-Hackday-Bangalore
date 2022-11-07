@@ -6,7 +6,7 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const web3 = createAlchemyWeb3(alchemyKey);
 
 const contractABI = require("../assets/TokenTribeABI.json")
-const contractAddress = "0xf823fB3196d4e1bF9a096C35E9d035bfBF3B6A43";
+const contractAddress = "0x483ddB5B6dCFB2906D265CF28AaCe5599E1397B0";
 
 
 const tokenTribe = new web3.eth.Contract(
@@ -223,14 +223,26 @@ export const getMaticPrice = async () => {
 }
 
 export const subscribedBounties = async (address) => {
-    const parsedAmount = ethers.utils.parseEther(String(1000));
+    let bounties = await tokenTribe.methods.SubscribedBounties(address).call();
+
+    return bounties;
+}
+
+export const retrieveBountyNumber = async (address, name) => {
+
+    //Check if wallet is still connected
+    if (!window.ethereum || address === null) {
+        return {
+            status:
+                "Please connect your wallet to procced with your transaction.",
+        };
+    }
 
     //Initialise the transcation parameters
     const transactionParameters = {
         to: contractAddress,
         from: address,
-        data: tokenTribe.methods.SubscribeToBounties().encodeABI(),
-        value: parsedAmount._hex,
+        data: tokenTribe.methods.RetrieveBountyNumber(name).encodeABI(),
         gas: '0x7EF40',
     };
 
@@ -256,4 +268,5 @@ export const subscribedBounties = async (address) => {
             status: " Sorry : " + error.message,
         };
     }
+
 }

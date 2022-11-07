@@ -1,4 +1,4 @@
 import TokenTribeAbi from "../assets/TokenTribeABI.json";
 
 export const TokenTribeABI = TokenTribeAbi;
-export const TokenTribeContractAddress = "0xf823fB3196d4e1bF9a096C35E9d035bfBF3B6A43";
+export const TokenTribeContractAddress = "0x483ddB5B6dCFB2906D265CF28AaCe5599E1397B0";

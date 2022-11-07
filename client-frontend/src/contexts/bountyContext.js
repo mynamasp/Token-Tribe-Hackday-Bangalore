@@ -65,7 +65,7 @@ export const BountyProvider = ({ children }) => {
             const res = await client.fetch(query);
             setBounty({
                 _id: res[0]._id,
-                author: res[0].author,
+                author: res[0].author['_ref'],
                 description: res[0].description,
                 name: res[0].name,
                 prize: res[0].prize,
@@ -116,6 +116,17 @@ export const BountyProvider = ({ children }) => {
         }
     }
 
+    const getActiveBounties = async () => {
+        if (!window.ethereum) return setAppStatus('no MetaMask')
+        try {
+            const query = '*[_type == "bounty" && status == false]'
+            const res = await client.fetch(query);
+            console.log(res);
+        } catch (error) {
+            setAppStatus(error);
+        }
+    }
+
     return (
         <BountyContext.Provider value={{
             bounties,
@@ -127,7 +138,8 @@ export const BountyProvider = ({ children }) => {
             getBountyComments,
             getBountyDetails,
             addCommentBounty,
-            closeBounty
+            closeBounty,
+            getActiveBounties
         }}>
             {children}
         </BountyContext.Provider>

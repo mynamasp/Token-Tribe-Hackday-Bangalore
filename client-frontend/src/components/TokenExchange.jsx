@@ -24,6 +24,7 @@ const LastPart = () => {
 
   useEffect(() => {
     getAccountBalance();
+    // eslint-disable-next-line
   }, [currentAccount]);
   return (
     <div className="">
@@ -108,10 +109,8 @@ const Cards = ({ numb, head }) => {
 };
 
 const TokenExchange = () => {
-  const tribeToken = 123;
-
   const walletContext = useContext(WalletContext);
-  const { currentUser, currentAccount } = walletContext;
+  const { currentAccount } = walletContext;
 
   const [token, setTokens] = useState(10);
 

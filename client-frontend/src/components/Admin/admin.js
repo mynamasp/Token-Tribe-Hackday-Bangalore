@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import './SetupAdmin.css';
 import RoundBall from "../../images/round-ball.png";
 import NewNavbar from "../NewNavbar";
+import { subscribedBounties, getTokenBalance, setBounty } from "../../utils/interact";
 
 const Admin = () => {
     const [activeSelection, setActiveState] = useState(false);
@@ -43,6 +44,8 @@ const Admin = () => {
                     height: "100vh",
                     justifyContent: "center",
                     alignItems: "center",
+                    background: 'url("https://images.unsplash.com/photo-1632220894022-a83eacddae2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80")',
+                    backgroundSize: "cover"
                 }}
             >
                 <div style={{ position: "relative" }}>
@@ -137,7 +140,7 @@ const Admin = () => {
                         }
                         onClick={() => setActiveState(!activeSelection)}
                     >
-                        Active Tasks
+                        Active Bounties
                     </div>
                     <div
                         style={
@@ -158,7 +161,7 @@ const Admin = () => {
                         }
                         onClick={() => setActiveState(!activeSelection)}
                     >
-                        Setup
+                        Add Bounty
                     </div>
                 </div>
             </div>
@@ -174,7 +177,7 @@ const Admin = () => {
 
 export default Admin;
 
-const Card = ({ name, description, prize, _id }) => {
+const Card = ({ name, description, prize, _id, status }) => {
     const navigate = useNavigate()
     return (
         <div
@@ -186,7 +189,7 @@ const Card = ({ name, description, prize, _id }) => {
                 margin: "1rem 0",
             }}
         >
-            <h3 onClick={() => navigate(`/bounty/${_id}`)} style={{ cursor: 'pointer', color: '#FF00E5' }}>{name}</h3>
+            <h3 onClick={() => navigate(`/bounty/${_id}`)} style={{ cursor: 'pointer', color: '#FF00E5', textDecoration: 'underline' }}>{name} &#8599;</h3>
             <br></br>
             <p>
                 {description}
@@ -207,20 +210,24 @@ const Card = ({ name, description, prize, _id }) => {
                         >
                             Bounty:
                         </span>{" "}
-                        {prize}
+                        {prize} $TRIBE
                     </p>
                 </div>
                 <div
                     style={{
-                        backgroundColor: "#DF1E1E",
+                        backgroundColor: "#000",
                         display: "inline",
                         padding: ".4rem .9rem",
                         borderRadius: "5rem",
                         cursor: "pointer",
                         fontWeight: "bold",
+                        color: `${status ? '#06d6a0' : '#06d6a0'}`,
+                        border: `${status ? '1px solid #06d6a0' : '1px solid #06d6a0'}`
                     }}
                 >
-                    Stop
+                    {
+                        status ? 'Completed' : 'Active'
+                    }
                 </div>
             </div>
         </div>
@@ -228,28 +235,74 @@ const Card = ({ name, description, prize, _id }) => {
 };
 
 const Setup = () => {
+
+    const walletContext = useContext(WalletContext);
+    const { currentAccount } = walletContext;
+    const bountyContext = useContext(BountyContext);
+    const { addBounties } = bountyContext;
+
+    const [freeBounty, setFreeBounty] = useState("--");
+    const [token, setToken] = useState("--");
+
+    const [bountyName, setBountyName] = useState('');
+    const [bountyDesc, setBountyDesc] = useState('');
+    const [bountyPrize, setBountyPrize] = useState(0);
+
+    const navigate = useNavigate();
+
+    const getSubscribedBounties = async () => {
+        const bounties = await subscribedBounties(currentAccount);
+        setFreeBounty(bounties);
+    }
+    const gettokenBalance = async () => {
+        const tokens = await getTokenBalance(currentAccount);
+        setToken(tokens);
+    }
+
+    const addBounty = async () => {
+        if (bountyName === '' || bountyDesc === '' || bountyPrize === 0) {
+            alert('Please fill the Params');
+            return;
+        }
+        if (token <= 50) {
+            alert("You don't have enough tokens!! Buy some :)");
+            return;
+        }
+        const txn = await setBounty(currentAccount, bountyName, bountyPrize, bountyDesc);
+        console.log(txn);
+        await addBounties(bountyName, bountyDesc, bountyPrize);
+        alert('Bounty Added Successfully');
+    }
+
+    useEffect(() => {
+        if (currentAccount) {
+            getSubscribedBounties(currentAccount);
+            gettokenBalance(currentAccount);
+        }
+    }, [currentAccount])
+
     return (
         <>
             <div className="setupMain">
                 <div> Enter Your Task Title : </div>
-                <input class="setupInput" type="text"></input>
+                <input className="setupInput" type="text" style={{ textAlign: 'left', padding: '10px' }} onChange={(e) => setBountyName(e.target.value)}></input>
                 <div> Task Description : </div>
-                <input class="setupInput" type="text"></input>
+                <textarea className="setupInput" type="text" style={{ textAlign: 'left', padding: '10px' }} onChange={(e) => setBountyDesc(e.target.value)}></textarea>
                 <div className="splitHead" style={{ marginTop: '30px' }}>
                     <div style={{ paddingLeft: '30px' }}> Bounty Offered (In $Tribe): </div>
                     <div style={{ paddingRight: '30px' }}> $Tribe Available: </div>
                 </div>
                 <div className="splitHead">
-                    <input class="setupInputHalf" type="text"></input>
-                    <div style={{ fontWeight: 'bold', fontSize: 'x-large', marginRight: '30px' }}> 1500 $Tribe </div>
+                    <input className="setupInputHalf" type="number" onChange={(e) => setBountyPrize(e.target.value)}></input>
+                    <div style={{ fontWeight: 'bold', fontSize: 'x-large', marginRight: '30px' }}> {token} $Tribe </div>
                 </div>
                 <div className="buymore">
                     <div>Running low on $Tribe </div>
-                    <button className="buynow">Buy Now</button>
+                    <button className="buynow" onClick={() => navigate('/buytoken')} style={{ cursor: 'pointer' }}>Buy Now</button>
                 </div>
             </div>
-            <div style={{ margin: 'auto', marginTop: '50px' }}>You still have 3 Posts available</div>
-            <button class="bigbtn"> {'> >'} Continue {'< <'} </button>
+            <div style={{ margin: 'auto', marginTop: '50px' }}>{(freeBounty === 0) ? "No Free Bounties, 50 $TRIBE will be applied as fee" : `You have ${freeBounty} Posts available`}</div>
+            <button className="bigbtn" onClick={() => addBounty()}> {'> >'} Continue {'< <'} </button>
         </>
     )
 }

@@ -67,7 +67,7 @@ const OpeningPage = () => {
               border: "solid white 3px",
               borderRadius: "30px",
               color: "white",
-              background: "black",
+              background: "none",
               padding: "20px 20px 20px 20px",
               fontSize: "20px",
               fontWeight: "bold",
@@ -96,7 +96,7 @@ const OpeningPage = () => {
                     marginRight: "15px",
                   }}
                 >
-                  Admin 👨‍💼
+                  Admin 👨‍💼 &#8599;
                 </a>
                 <a
                   href="/buytoken"
@@ -106,7 +106,7 @@ const OpeningPage = () => {
                     marginRight: "15px",
                   }}
                 >
-                  Buy Tokens 🪙
+                  Buy Tokens 🪙 &#8599;
                 </a>
               </div>
             ) : (
@@ -119,7 +119,7 @@ const OpeningPage = () => {
                     marginRight: "15px",
                   }}
                 >
-                  Bounty 💰
+                  Bounty 💰 &#8599;
                 </a>
                 <a
                   href="/leaderboard"
@@ -129,7 +129,7 @@ const OpeningPage = () => {
                     marginRight: "15px",
                   }}
                 >
-                  Leaderboard 📈
+                  Leaderboard 📈 &#8599;
                 </a>
               </div>
             )}
